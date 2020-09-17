@@ -1,14 +1,14 @@
 ---
-title: "Decorators"
+title: "Variables"
 layout: "bundle"
 outputs: ["Reveal"]
-date: 2020-09-18T23:34:45+10:00
+date: 2020-09-18T00:40:38+10:00
 draft: true
 ---
 
 {{< slide class="center" >}}
 
-## Decorators
+## Variables
 
 ---
 
