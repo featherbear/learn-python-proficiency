@@ -5,4 +5,4 @@ A string is an array of characters.
 We can assign a string to a variable
 my_string = &amp;quot;Hello, World&amp;quot;
 Strings A string is often identified by being surrounded by single or double quotation marks
-string1 = &#39;this is a string&#39; string2 = &amp;quot;this is also a string&amp;quot; Quotation Characters If a string is enclosed in single quotes, any contained single quotes must be escaped with the \ character.</description></item></channel></rss>
+string1 = &#39;this is a string&#39; string2 = &amp;quot;this is also a string&amp;quot; Quotation Characters A single quote enclosed string must have its contained single quotes escaped with the \ character.</description></item></channel></rss>
