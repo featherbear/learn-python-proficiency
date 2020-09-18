@@ -207,7 +207,8 @@ myString[2] = "C" # ERROR
 
 ## String Formatting (1)
 
-String concatenation can be performed through string replacement methods
+String concatenation can be performed through string replacement methods and [modifiers](https://python-reference.readthedocs.io/en/latest/docs/str/formatting.html)
+
 
 ```python
 myFmtString1 = "Hello, %s!" % "world"
@@ -224,12 +225,6 @@ myFmtString2 = "%s is %d years old" % ("Tony", 9)
 ```
 
 > `%d` is replaced with a passed integer
-
-{{% /fragment %}}
-
-{{% fragment %}}
-
-`%-format` strings can also use [format modifiers](https://python-reference.readthedocs.io/en/latest/docs/str/formatting.html)
 
 {{% /fragment %}}
 
