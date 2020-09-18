@@ -1,1 +1,8 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Python Proficiency</title><link>/</link><description>Recent content on Python Proficiency</description><generator>Hugo -- gohugo.io</generator><language>en-au</language><atom:link href="/index.xml" rel="self" type="application/rss+xml"/></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Python Proficiency</title><link>/</link><description>Recent content on Python Proficiency</description><generator>Hugo -- gohugo.io</generator><language>en-au</language><lastBuildDate>Fri, 18 Sep 2020 00:40:45 +1000</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml"/><item><title>Strings</title><link>/strings/</link><pubDate>Fri, 18 Sep 2020 00:40:45 +1000</pubDate><guid>/strings/</guid><description>Strings Strings &amp;ldquo;Hello, World!&amp;rdquo;
+A string is an array of characters.
+&amp;nbsp;
+&amp;nbsp;
+We can assign a string to a variable
+my_string = &amp;quot;Hello, World&amp;quot;
+Strings A string is often identified by being surrounded by single or double quotation marks
+string1 = &#39;this is a string&#39; string2 = &amp;quot;this is also a string&amp;quot; Quotation Characters If a string is enclosed in single quotes, any contained single quotes must be escaped with the \ character.</description></item></channel></rss>

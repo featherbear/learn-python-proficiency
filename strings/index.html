@@ -1,0 +1,92 @@
+<!doctype html><html lang=en><head><meta charset=utf-8><title>Strings</title><meta name=apple-mobile-web-app-capable content=yes><meta name=apple-mobile-web-app-status-bar-style content=black-translucent><meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"><link rel=stylesheet href=../reveal-js/css/reset.css><link rel=stylesheet href=../reveal-js/css/reveal.css><link rel=stylesheet href=../reveal-js/css/theme/black.css id=theme><link rel=stylesheet href=../highlight-js/default.min.css></head><body><div class=reveal><div class=slides><section data-noprocess data-shortcode-slide class=center><h2 id=strings>Strings</h2></section><section data-noprocess data-shortcode-slide class=center><h2 id=strings-1>Strings</h2><p>&ldquo;Hello, World!&rdquo;</p><p>A string is an array of characters.</p><span class=fragment><p>&nbsp;<br>&nbsp;<br>We can assign a string to a variable</p><blockquote><p><code>my_string = &quot;Hello, World&quot;</code></p></blockquote></span></section><section><h2 id=strings-2>Strings</h2><p>A string is often identified by being surrounded by single or double quotation marks</p><pre><code class=language-python>string1 = 'this is a string'
+string2 = &quot;this is also a string&quot;
+</code></pre><h2 id=quotation-characters>Quotation Characters</h2><p>If a string is enclosed in single quotes, any contained single quotes must be escaped with the <code>\</code> character.</p><p>Likewise, if a double quote enclosed string contains double quotes, they be escaped.</p><pre><code class=language-python>string3 = 'Good example, isn\'t it?'
+string4 = &quot;Wow, programming must be \&quot;so fun\&quot;...&quot;
+</code></pre></section><section><h2 id=string-functions>String Functions</h2><p>There are many inbuilt string functions</p><ul><li><code>len(&lt;str&gt;)</code></li><li><code>&lt;str&gt;.lower()</code></li><li><code>&lt;str&gt;.upper()</code></li><li><code>&lt;str&gt;.startswith(...)</code></li><li><code>&lt;str&gt;.endswith(...)</code></li><li><code>&lt;str&gt;.zfill(...)</code></li><li>&hellip; many more!</li></ul></section><section><h2 id=concatenation>Concatenation</h2><p>Strings can be combined together.</p><pre><code class=language-python>&quot;Hello, &quot; + &quot;World!&quot; # Hello, World!
+</code></pre><span class=fragment><p>String variables can also be combined</p><pre><code class=language-python>string5 = &quot;Hello, &quot;
+string6 = &quot;World!&quot;
+
+string5 + string6 # Hello, World!
+</code></pre></span><span class=fragment><p>String variables can also be added to strings</p><pre><code class=language-python>string5 + &quot;World!&quot; # Hello, World!
+</code></pre></span></section><section><h2 id=concatening-non-strings>Concatening Non-Strings</h2><p>Strings can only be concatenated with <strong>other</strong> strings!<br>To combine variables and values that are not strings, we must call the <code>str(...)</code> method (or similar) on those variables</p><pre><code class=language-python>age = 9
+name = &quot;Tony&quot;
+
+name + &quot;is &quot; + age + &quot; years old&quot; # &lt; TypeError &gt;
+name + &quot;is &quot; + str(age) + &quot; years old&quot; # Tony is 9 years old
+
+</code></pre></section><section><h2 id=list-indexing>List Indexing</h2><p>In Python, we count from <code>0</code>!<br>Therefore indexing also starts from zero</p><pre><code class=language-python>string = &quot;ABCDE&quot;
+string[0] = &quot;A&quot;
+string[1] = &quot;B&quot;
+string[2] = &quot;C&quot;
+string[3] = &quot;D&quot;
+string[4] = &quot;E&quot;
+
+string[5] DOES NOT EXIST
+</code></pre></section><section><h2 id=list-ranges>List Ranges</h2><pre><code class=language-python>string = &quot;ABCDE&quot;
+</code></pre><section data-shortcode-section><p>We can extract part of the string using these indexes</p><blockquote><p><code>stringVariable[from:to-1]</code></p></blockquote><pre><code class=language-python>string[2:4] == &quot;CD&quot;
+string[0:3] == &quot;ABC&quot;
+</code></pre></section><section><p>If extracting from the start to a certain index, we can omit the <code>0</code></p><blockquote><p><code>stringVariable[:to-1]</code></p></blockquote><pre><code class=language-python>string[:3] == &quot;ABC&quot;
+</code></pre></section><section><p>If extracting a certain index to the end of the string, we can omit the value after the <code>:</code> character</p><blockquote><p><code>stringVariable[3:]</code></p></blockquote><pre><code class=language-python>string[3:] == &quot;DE&quot;
+</code></pre></section></section><section><h2 id=list-stepping>List Stepping</h2><p>We can select a pattern of characters in the string by setting the <code>step</code> option of our index.</p><blockquote><p><code>string[from:to-1:step]</code></p></blockquote><pre><code class=language-python>string = &quot;ABCDEF&quot;
+
+string[0:5]   == 'ABCDE'
+string[0:5:1] == 'ABCDE'
+string[0:5:2] == 'ACE'
+string[0:5:3] == 'AD'
+</code></pre><p>A negative step could even reverse a string!</p><pre><code class=language-python>string[::-1] == 'EDCBA'
+</code></pre></section><section><h2 id=mutability>Mutability</h2><p>Whilst we can access a specific position in a string, we cannot directly modify it</p><pre><code class=language-python>myString = &quot;abcde&quot;
+myString[2] == &quot;c&quot;
+myString[2] = &quot;C&quot; # ERROR
+</code></pre></section><section><h2 id=string-formatting-1>String Formatting (1)</h2><p>String concatenation can be performed through string replacement methods</p><pre><code class=language-python>myFmtString1 = &quot;Hello, %s!&quot; % &quot;world&quot;
+</code></pre><blockquote><p><code>%s</code> is replaced with a passed string</p></blockquote><span class=fragment><p>If multiple format strings are used, the passed values should be passed as a <code>tuple</code></p><pre><code class=language-python>myFmtString2 = &quot;%s is %d years old&quot; % (&quot;Tony&quot;, 9)
+</code></pre><blockquote><p><code>%d</code> is replaced with a passed integer</p></blockquote></span><span class=fragment><p><code>%-format</code> strings can also use <a href=https://python-reference.readthedocs.io/en/latest/docs/str/formatting.html>format modifiers</a></p></span></section><section><h2 id=string-formatting-2>String Formatting (2)</h2><p>Strings also have a <code>.format(...)</code> function, which replace the placeholders in a string with values passed into the function.</p><pre><code class=language-python>myFmtString3 = '{1} is {0} years old'.format(9, &quot;Tony&quot;)
+
+# Tony is 9 years old. His favourite colour is blue
+</code></pre><p>The <code>.format(...)</code> function takes in both positional and keyword values</p><pre><code class=language-python>myFmtString4 = &quot;{} goes {sound}&quot;.format(&quot;cow&quot;, sound=&quot;moo&quot;)
+
+# Cows go moo
+</code></pre></section><section><h2 id=string-formatting-3>String Formatting (3)</h2><h3 id=f-strings>F-Strings</h3><p>Introduced in Python 3.6, format string literals can also be used to format values.</p><pre><code class=language-python>name = &quot;Tony&quot;
+age = &quot;9&quot;
+
+f&quot;{name} is {age} years old&quot;
+# Tony is 9 years
+
+f&quot;16 x 9 is {16 * 9}&quot;
+# 16 x 9 is 144
+</code></pre></section><section><h2 id=escape-characters>Escape Characters</h2><p>Escape characters (control data) can be placed in a string, commonly new-line (<code>\n</code>) and tab (<code>\t</code>) characters</p><pre><code class=language-python>myString1 = &quot;Hello World&quot;
+myString2 = &quot;Hello\nWorld&quot;
+
+print(myString1)
+# Hello World
+
+print(myString2)
+# Hello
+# World
+</code></pre></section><section><h3 id=multi-line-strings>Multi-line Strings</h3><p>A string can span multiple lines of code</p><pre><code class=language-python>multilineString1 = &quot;&quot;&quot;Hello there
+this is a
+multiline string
+&quot;&quot;&quot;
+</code></pre><p>They function as normal strings, and can be used with string formatting techniques, as well as as an f-string</p><pre><code class=language-python>adjective = &quot;cool&quot;
+multilineString2 = f'''
+I think
+that's pretty {adjective}!
+'''
+</code></pre></section><section><h2 id=raw-strings>Raw Strings</h2><p>Raw strings prevent escape characters from being evaluated</p><pre><code class=language-python>normalString = &quot;Hello\nWorld!&quot;
+# Hello
+# World!
+
+rawString = r&quot;Hello\nWorld!&quot;
+# Hello\nWorld!
+</code></pre></section><section><h2 id=unicode-strings>Unicode Strings</h2><p>In Python 2, to use unicode (UTF-8) characters, an encoding header must be put at the start of the file, and the strings needs a <code>u</code> prepended to the string</p><pre><code>-*- coding: utf-8 -*-
+# Python 2.X
+unicodeString = u&quot;♥&quot;
+</code></pre><p>In Python 3, strings are unicode by default, so nothing needs to be done</p><pre><code class=language-python># Python 3.X
+unicodeString = &quot;♥&quot;
+</code></pre></section><section><h2 id=byte-strings>Byte Strings</h2><p>Bytes have a numerical value from <code>0x00</code> (<code>0</code>) to <code>0xFF</code> (<code>255</code>). A byte-string contains only byte characters.</p><p><code>&lt;str&gt;.encode()</code> is used to convert a string into a bytestring</p><pre><code class=language-python>unicodeString = &quot;♥&quot;
+unicodeString.encode() # b'\xe2\x99\xa5'
+</code></pre><p><code>&lt;bytes&gt;.decode()</code> is used to convert a bytestring into a string</p><pre><code class=language-python>byteString = b'\xf0\x9f\x98\x8a'
+byteString.decode() # 😊
+</code></pre></section></div></div><script type=text/javascript src=../reveal-hugo/object-assign.js></script><a href=../reveal-js/css/print/ id=print-location style=display:none></a><script type=text/javascript>var printLocationElement=document.getElementById('print-location');var link=document.createElement('link');link.rel='stylesheet';link.type='text/css';link.href=printLocationElement.href+(window.location.search.match(/print-pdf/gi)?'pdf.css':'paper.css');document.getElementsByTagName('head')[0].appendChild(link);</script><script type=application/json id=reveal-hugo-site-params>{"center":false,"history":true,"pdf_separate_fragments":false,"slide_number":true}</script><script type=application/json id=reveal-hugo-page-params>null</script><script src=../reveal-js/js/reveal.js></script><script type=text/javascript>function camelize(map){if(map){Object.keys(map).forEach(function(k){newK=k.replace(/(\_\w)/g,function(m){return m[1].toUpperCase()});if(newK!=k){map[newK]=map[k];delete map[k];}});}
+return map;}
+var revealHugoDefaults={center:true,controls:true,history:true,progress:true,transition:"slide"};var revealHugoSiteParams=JSON.parse(document.getElementById('reveal-hugo-site-params').innerHTML);var revealHugoPageParams=JSON.parse(document.getElementById('reveal-hugo-page-params').innerHTML);var options=Object.assign({},camelize(revealHugoDefaults),camelize(revealHugoSiteParams),camelize(revealHugoPageParams));Reveal.initialize(options);</script><script type=text/javascript src=../reveal-js/plugin/markdown/marked.js></script><script type=text/javascript src=../reveal-js/plugin/markdown/markdown.js></script><script type=text/javascript src=../reveal-js/plugin/highlight/highlight.js></script><script type=text/javascript src=../reveal-js/plugin/zoom-js/zoom.js></script><script type=text/javascript src=../reveal-js/plugin/notes/notes.js></script><script type=text/javascript>document.title+=" | Python Proficiency";window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']]},svg:{fontCache:'global'}};</script><script type=text/javascript id=MathJax-script async src=https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js></script><script>if(window.location.search.match(/\?print-pdf/gi)){function insertCSS(src){const link=document.createElement('link');link.rel='stylesheet';link.type='text/css';link.href=src;document.getElementsByTagName('head')[0].appendChild(link);}
+insertCSS('\/reveal-js\/css\/print\/pdf.css');insertCSS('\/hideHomeButton.css');}</script><a id=homeButton style=position:fixed;bottom:8px;left:8px;z-index:31;font-family:Helvetica,sans-serif;font-size:12px;line-height:1;color:#fff;background-color:rgba(0,0,0,.4);padding:5px;text-decoration:none href=../>Home</a></body></html>
