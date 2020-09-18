@@ -40,9 +40,7 @@ string2 = "this is also a string"
 
 ## Quotation Characters
 
-If a string is enclosed in single quotes, any contained single quotes must be escaped with the `\` character.
-
-Likewise, if a double quote enclosed string contains double quotes, they be escaped.
+A single quote enclosed string must have its contained single quotes escaped with the `\` character. The same applies for double quoted strings with double quotes.
 
 ```python
 string3 = 'Good example, isn\'t it?'
