@@ -5,4 +5,9 @@ A string is an array of characters.
 We can assign a string to a variable
 my_string = &amp;quot;Hello, World&amp;quot;
 Strings A string is often identified by being surrounded by single or double quotation marks
-string1 = &#39;this is a string&#39; string2 = &amp;quot;this is also a string&amp;quot; Quotation Characters A single quote enclosed string must have its contained single quotes escaped with the \ character.</description></item></channel></rss>
+string1 = &#39;this is a string&#39; string2 = &amp;quot;this is also a string&amp;quot; Quotation Characters A single quote enclosed string must have its contained single quotes escaped with the \ character.</description></item><item><title>Variables</title><link>/variables/</link><pubDate>Fri, 18 Sep 2020 00:40:38 +1000</pubDate><guid>/variables/</guid><description>Variables Variables A variable contains data which can be accessed and and modified in the program
+A variable has a data type - which specifies the nature of the data - i.e whether the variable is a number, a picture, a word&amp;hellip;
+myVariable = &#39;hello&#39;
+myOtherVariable = 185.2
+Language Semantics In Python, variables are strongly typed - variable types must agree with the operation
+10 + 10 # Will work &#39;10&#39; + &#39;10&#39; # Will work &#39;10&#39; + 10 # Will cause an error In Python, variables are dynamically typed - meaning that the type of a variable can vary during runtime</description></item></channel></rss>

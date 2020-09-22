@@ -1,0 +1,82 @@
+<!doctype html><html lang=en><head><meta charset=utf-8><title>Variables</title><meta name=apple-mobile-web-app-capable content=yes><meta name=apple-mobile-web-app-status-bar-style content=black-translucent><meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"><link rel=stylesheet href=../reveal-js/css/reset.css><link rel=stylesheet href=../reveal-js/css/reveal.css><link rel=stylesheet href=../reveal-js/css/theme/black.css id=theme><link rel=stylesheet href=../highlight-js/default.min.css></head><body><div class=reveal><div class=slides><section data-noprocess data-shortcode-slide class=center><h2 id=variables>Variables</h2></section><section><h2 id=variables-1>Variables</h2><p>A variable contains data which can be accessed and and modified in the program</p><p>A variable has a <code>data type</code> - which specifies the nature of the data - i.e whether the variable is a number, a picture, a word&hellip;</p><blockquote><p><code>myVariable = 'hello'</code></p><p><code>myOtherVariable = 185.2</code></p></blockquote></section><section><h2 id=language-semantics>Language Semantics</h2><span class=fragment><p>In Python, variables are <strong>strongly typed</strong> - variable types must agree with the operation</p><pre><code>10 + 10     # Will work
+'10' + '10' # Will work
+'10' + 10   # Will cause an error
+</code></pre></span><span class=fragment><p>In Python, variables are <strong>dynamically typed</strong> - meaning that the type of a variable can vary during runtime</p><pre><code class=language-python>a = 'hello' # `a` is a string
+a = 10      # `a` is now an integer
+</code></pre></span></section><section><h2 id=types>Types</h2><p>Python has many inbuilt types</p><ul><li><code>int</code></li><li><code>float</code></li><li><code>str</code></li><li><code>list</code></li><li><code>str</code></li><li><code>bool</code></li><li>etc &hellip;</li></ul><p>Custom data types can also be created by implementing <a href=../classes>classes</a></p></section><section><h2 id=converting-between-types>Converting Between Types</h2><p>Several inbuilt functions exist to convert a data type into another data type</p><pre><code class=language-python>var = &quot;15&quot;
+int(var)      # 15
+str(int(var)) # &quot;15&quot;
+</code></pre></section><section><h2 id=deleting-variables>Deleting Variables</h2><p>To delete a variable, the following syntax can be used</p><blockquote><p><code>del &gt;&gt;variableName&lt;&lt;</code></p></blockquote><pre><code class=language-python>name = 'Jason'
+print(name)
+del name
+</code></pre><p>Deleting variables helps to reduce memory usage, but is often not required</p></section><section><h2 id=function-variables>Function Variables</h2><p>The scope of a variable refers to the regions of the program which can access a variable.</p><p>If a function defines a variable (by assignment) that <em>shadows</em> a variable in the outer scope (i.e. same name), the outer-scoped variable will be inaccessible</p></section><section><h2 id=function-variables-1>Function Variables</h2><section data-shortcode-section><p>If a function defines a variable (by assignment) that <em>shadows</em> a variable in the outer scope (i.e. same name), the outer-scoped variable will be inaccessible</p><pre><code class=language-python>a = 5
+
+def doSomething():
+    a = 6      # a is 6 only in the function
+    print(a)
+
+doSomething()  # 6
+print(a)       # 5 - a is still 5
+</code></pre></section><section><p>To affect the outer scope variable, the <code>global</code> keyword is needed</p><pre><code class=language-python>a = 5
+
+def doSomething():
+    global a   # global scope specifier
+    a = 6
+    print(a)
+
+doSomething()  # 6
+print(a)       # 6 - a is now 6
+</code></pre></section><section><p>Nested functions must redeclare any variable scope specifiers, else they will create their own local function variables.</p><pre><code class=language-python>a = 1
+
+def doTheThing():
+    a = 2
+    def doTheOtherThing():
+        a = 3
+        return a
+    print(&quot;doTheOtherThing&quot;, doTheOtherThing()) # 3
+    return a
+
+print(&quot;doTheThing&quot;, doTheThing())               # 2
+print(&quot;toplevel&quot;, a)                            # 1
+</code></pre></section><section><p>For a nested function, the <code>nonlocal</code> scope specifier is used instead of <code>global</code></p><pre><code class=language-python>a = 1
+
+def doTheThing():
+    a = 2
+    def doTheOtherThing():
+        nonlocal a       # nonlocal scope specifier
+        a = 3
+        return a
+    print(&quot;doTheOtherThing&quot;, doTheOtherThing()) # 3
+    return a
+
+print(&quot;doTheThing&quot;, doTheThing())               # 3
+print(&quot;toplevel&quot;, a)                            # 1
+</code></pre></section><section><p>If a <code>global</code> specifier is used in a subfunction, it will reference the top-level variable, bypassing the outer-function variable</p><pre><code class=language-python>a = 1
+
+def doTheThing():
+    a = 2
+    def doTheOtherThing():
+        global a
+        a = 3
+        return a
+    print(&quot;doTheOtherThing&quot;, doTheOtherThing()) # 3
+    return a
+
+print(&quot;doTheThing&quot;, doTheThing())               # 3
+print(&quot;toplevel&quot;, a)                            # 3
+</code></pre></section><section><h3 id=tl-dr>TL;DR</h3><ul><li>Use the <code>global</code> keyword in a function that uses an outer-scope variable</li><li>Use the <code>nonlocal</code> keyword in a subfunction that uses an outer-function variable</li><li>A scope specifier is only required if a shadowed variable is modified by assignment.</li></ul></section></section><section><h2 id=variable-dictionary-access>Variable dictionary access</h2><pre><code class=language-python>myGlobalVar = 5
+
+def doIt():
+  globals()['myGlobalVar'] = 10
+
+  myLocalVar = 20
+  locals()['myLocalVar'] = 50
+
+  print(&quot;myLocalVar&quot;, myLocalVar) # 20 - not changed!
+  
+doIt()
+print(&quot;myGlobalVar&quot;, myGlobalVar) # 10 - changed!
+</code></pre><section data-shortcode-section><p>In Python, variables are stored in special dictionaries that are accessible through the <code>locals()</code> and <code>globals()</code> function.</p></section><section><p>Using <code>globals()</code> is a solution to global variable shadowing problems, as the dictionary reflects the actual global values</p></section><section><p><strong>NOTE</strong>: The <code>globals()</code> dictionary will update the global variables, however the <code>locals()</code> dictionary does not guarantee the reflection of values</p></section></section></div></div><script type=text/javascript src=../reveal-hugo/object-assign.js></script><a href=../reveal-js/css/print/ id=print-location style=display:none></a><script type=text/javascript>var printLocationElement=document.getElementById('print-location');var link=document.createElement('link');link.rel='stylesheet';link.type='text/css';link.href=printLocationElement.href+(window.location.search.match(/print-pdf/gi)?'pdf.css':'paper.css');document.getElementsByTagName('head')[0].appendChild(link);</script><script type=application/json id=reveal-hugo-site-params>{"center":false,"history":true,"pdf_separate_fragments":false,"slide_number":true}</script><script type=application/json id=reveal-hugo-page-params>null</script><script src=../reveal-js/js/reveal.js></script><script type=text/javascript>function camelize(map){if(map){Object.keys(map).forEach(function(k){newK=k.replace(/(\_\w)/g,function(m){return m[1].toUpperCase()});if(newK!=k){map[newK]=map[k];delete map[k];}});}
+return map;}
+var revealHugoDefaults={center:true,controls:true,history:true,progress:true,transition:"slide"};var revealHugoSiteParams=JSON.parse(document.getElementById('reveal-hugo-site-params').innerHTML);var revealHugoPageParams=JSON.parse(document.getElementById('reveal-hugo-page-params').innerHTML);var options=Object.assign({},camelize(revealHugoDefaults),camelize(revealHugoSiteParams),camelize(revealHugoPageParams));Reveal.initialize(options);</script><script type=text/javascript src=../reveal-js/plugin/markdown/marked.js></script><script type=text/javascript src=../reveal-js/plugin/markdown/markdown.js></script><script type=text/javascript src=../reveal-js/plugin/highlight/highlight.js></script><script type=text/javascript src=../reveal-js/plugin/zoom-js/zoom.js></script><script type=text/javascript src=../reveal-js/plugin/notes/notes.js></script><script type=text/javascript>document.title+=" | Python Proficiency";window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']]},svg:{fontCache:'global'}};</script><script type=text/javascript id=MathJax-script async src=https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js></script><script>if(window.location.search.match(/\?print-pdf/gi)){function insertCSS(src){const link=document.createElement('link');link.rel='stylesheet';link.type='text/css';link.href=src;document.getElementsByTagName('head')[0].appendChild(link);}
+insertCSS('\/reveal-js\/css\/print\/pdf.css');insertCSS('\/hideHomeButton.css');}</script><a id=homeButton style=position:fixed;bottom:8px;left:8px;z-index:31;font-family:Helvetica,sans-serif;font-size:12px;line-height:1;color:#fff;background-color:rgba(0,0,0,.4);padding:5px;text-decoration:none href=../>Home</a></body></html>
